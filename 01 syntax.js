@@ -147,7 +147,8 @@ function agrEl(elements) {
     }
     }
     
-    agrEl([3, 5, 8])
+    // agrEl([3, 5, 8])
+
 // XRX
 
 //task e01
@@ -169,7 +170,7 @@ function comdiv(...args){
     }
 }
 
-comdiv(2, 1100)
+// comdiv(2, 1100)
 
 //task e03
 
@@ -204,9 +205,71 @@ function prevDay(year, month, day){
 
 //task e05
 
-function tiToW(steps_distance, stepsInMeters, speed){
+function tiToW(steps_distance, stepsInMeters, speed_kmh){
+    let total_len_km = stepsInMeters * steps_distance / 1000;
+    let breaks_in_sec = Math.floor(total_len_km / 0.5) * 60
+    let time_sec = Math.round(total_len_km / speed_kmh * 3600 + breaks_in_sec)
 
-
+    let hours = Math.floor(time_sec / 3600);
+    let min = Math.floor((time_sec - ( hours % 3600 )) /60)
+    let sec = Math.floor(time_sec % 60)
+    console.log(`${hours.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`)
+    
 }
 
-tiToW(2564, 0.70, 5.5)
+tiToW(4000, 0.60, 5)
+
+//task e06
+
+function speedRadar(speed, place){
+
+
+    let speed_limits = {
+        "motorway": 130,
+        "interstate": 90,
+        "city": 50,
+        "residential": 20,
+    }
+
+    let status = ''
+    let speed_dif = speed -speed_limits[place] 
+
+    if (speed_dif > 40) {
+        status = 'reckless driving'
+    } else if (speed_dif > 20){
+        status = 'excessive speeding'
+    } else if (speed_dif > 0){
+        status = 'speeding'
+    } else { status = 'normal'
+    }
+
+    if (status == "normal"){
+    console.log(`Driving ${speed} km/h in a ${speed_limits[place]} zone`)
+    } else {
+    console.log(`The speed is ${speed_dif} km/h faster than the allowed speed of ${speed_limits[place]} - ${status}`)
+    }
+}
+
+
+// speedRadar(40, 'city')
+// speedRadar(21, 'residential')
+// speedRadar(120, 'interstate')
+// speedRadar(200, 'motorway')
+
+
+//taks e09*
+
+function wordUpper(text){
+
+    let pattern = new RegExp('\\w+', 'g');
+    let matches  = text.match(pattern);
+    let wordsFound = [];
+    if (matches) {
+        for (word of matches) {
+            wordsFound.push(word.toUpperCase());
+        }
+        console.log(wordsFound.join(', '));
+    }
+}
+
+wordUpper('Functions in JS can be nested, i.e. hold other functions')
