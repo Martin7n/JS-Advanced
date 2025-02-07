@@ -152,10 +152,7 @@ function agrEl(elements) {
 // XRX
 
 //task e01
-
-function fru(fr, w, pr){
-    console.log(`I need ${(w/1000*pr).toFixed(2)} to buy ${w/1000} kilograms ${fr}.`)
-}
+ 
 
 // fru('orange', 2500, 1.80)
 
