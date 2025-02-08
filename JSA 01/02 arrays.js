@@ -318,17 +318,32 @@ function sortByCrit(arr){
 // task e-08
 
 function magicMatrix(marray){
-    let result = true
 
+    let colSum = 0
+    
+    const sum = (arr) => arr.reduce((p, c) => p + c);
+    let firstRowSum = sum(marray[0]);
 
-
-    console.log(result)
-
+    for (let i = 0; i < marray.length; i++) {
+        let row = marray[i]
+        let rowSum = sum(row)
+            if (rowSum != firstRowSum) return false
+            let colSum = 0
+        for (let j = 0; j < marray.length; j++) {
+            colSum += marray[j][i]
+            
+        }
+        if (colSum != firstRowSum) return false
+ 
     }
+    return true
+
+}
 
 
+// console.log(magicMatrix([[11, 32, 45],
+//     [21, 0, 1],
+//     [21, 1, 1]]))
 
+// task e-10
 
-magicMatrix([[11, 32, 45],
-    [21, 0, 1,],
-    [21, 1, 1]])
