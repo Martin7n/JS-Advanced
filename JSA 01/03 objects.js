@@ -39,6 +39,7 @@ function workObj(obj){
 //     levelOfHydrated: 0,
 //     dizziness: false }))
 
+// taks l-04
 
 function carMake(obj){
 
@@ -108,10 +109,102 @@ function carMMake(obj){
 }
 
 
-console.log(carMMake({
-    model: 'VW Golf II',
-    power: 90,
-    color: 'blue',
-    carriage: 'hatchback',
-    wheelsize: 14
-}))
+// console.log(carMMake({
+//     model: 'VW Golf II',
+//     power: 90,
+//     color: 'blue',
+//     carriage: 'hatchback',
+//     wheelsize: 14
+// }))
+
+// task l-05
+
+
+// function heroInventory(heroList){
+
+//     // console.log(heroList)
+//     let result = []
+
+//     for (const element of heroList) {
+//         let spl = element.split(" / ") 
+//         let it = spl[2]
+//         let items = it.split(", ")
+//         result.push({
+//             name: spl[0],
+//             level: Number(spl[1]),
+//             items,
+//         });
+
+//     }
+
+//     console.log(JSON.stringify(result))
+
+// }
+
+
+function heroInventory(heroList){
+
+    // console.log(heroList)
+    let result = []
+
+    for (const element of heroList) {
+
+  
+        let [name, level, items] = element.split(" / ")
+
+        if (name != ""){
+        level = Number(level)
+        items = items ? items.split(', ') : [];
+
+        result.push({
+            name,
+            level,
+            items
+        });}
+
+    }
+
+
+    console.log(JSON.stringify(result))
+}
+
+
+// heroInventory(['Isacc / 25 / Apple, GravityGun',
+//     'Derek / 12 / BarrelVest, DestructionSword',
+//     'Hes / 1 / Desolator, Sentinel, Antara', ""])
+
+// heroInventory(['Jake / 1000 / Gauss, HolidayGrenade'])
+
+
+//task e-05
+
+function lowestCityPrice(citiesInfo){
+
+
+    const towns = citiesInfo
+    .map(e=>{
+        const[town, product, price] = e.split(' | ');
+        return {town,product, price: Number(price)};
+    }).reduce((p,c)=>{
+        if(!p.hasOwnProperty(c.product)){
+            p[c.product] = c;
+        } else {
+            if(c.price < p[c.product].price){
+                p[c.product] = c;
+            }
+        }
+        return p;
+    }, {})
+
+    console.log(Object.values(towns).map(val=>`${val.product} -> ${val.price} (${val.town})`).join('\n'));
+}
+
+// lowestCityPrice(['Sample Town | Sample Product | 1000',
+//     'Sample Town | Orange | 2',
+//     'Sample Town | Peach | 1',
+//     'Sofia | Orange | 3',
+//     'Sofia | Peach | 2',
+//     'New York | Sample Product | 1000.1',
+//     'New York | Burger | 10'])
+
+  
