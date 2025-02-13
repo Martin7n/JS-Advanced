@@ -135,4 +135,40 @@ function sumProdArray(arr){
     return `Sum: ${s} Product: ${p}`
 }
 
-console.log(sumProdArray([1, 2, 3, 4, 5, 6]))
+// console.log(sumProdArray([1, 2, 3, 4, 5, 6])) 
+
+function sumOfArraysbyIndex(ar1, ar2){
+
+    let sum = []
+
+    while (ar1.length >0 || ar2.length> 0){
+
+        let elSum = (ar1.length >0 ? ar1.shift() : 0) +  (ar2.length >0 ?  ar2.shift() :0)
+        sum.push(elSum)
+       
+    }
+    return sum
+
+}
+
+
+// const array1 = [1,0,2,3,4, 13, 10, 4000];
+// const array2 = [3,5,6,7,8,13];
+// console.log(sumOfArraysbyIndex(array1, array2)) 
+
+function unzipArr(arr){
+
+ let newArr =  arr.reduce(
+    (res, val) => (res.forEach((v, i) => res[i].push(v)), acc),
+
+    Array.from({
+      length: Math.max(...arr.map(x => x.length))
+    }).map(x => [])
+  );
+
+  return newArr
+
+    
+}
+
+// console.log(unzipArr([['a', 1, true], ['b', 2, false]]))
