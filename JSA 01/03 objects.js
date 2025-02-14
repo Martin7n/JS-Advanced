@@ -208,3 +208,102 @@ function lowestCityPrice(citiesInfo){
 //     'New York | Burger | 10'])
 
   
+// task e-06
+
+function catStoreROFLsolve(arr){
+
+    const products = arr.sort((a, b) => a.localeCompare(b))
+    
+
+    let result = {}
+    products.forEach(element => {
+        let key = element[0];
+        let value = element;
+        if (!result.hasOwnProperty(key)){
+            result[key] = [value]
+        } else {
+            result[key].push(value)
+        }        
+    });
+    
+    for (const char in result) {
+        let final = result[char]
+        console.log(char);
+        final.forEach(
+            (line) =>
+            {
+              let [k, v] =  line.split(" : ");
+              console.log(` ${k}: ${v}`)
+            }
+
+        )
+
+    }
+ 
+}
+
+
+function catStoreSFancy(arr){
+
+    const dicRes = arr
+        .sort((a, b) => a.localeCompare(b))
+        .reduce(
+            (obj, line) =>
+            {
+                const [prod, value] = line.split(" : ");
+                let val = `  ${prod}: ${value}\n`
+                const [key, valuelist] =  [prod[0], val]
+                if (!obj.hasOwnProperty(key))
+                {
+                        obj[key] = val
+                } else {
+                    obj[key] += val
+                }
+                return obj
+            }, {}
+
+        )
+
+    for (const key in dicRes) {
+        console.log(key);
+        console.log(dicRes[key].trimEnd());             
+    }    
+
+}
+
+
+function catStoreAlmostFancy(arr){
+
+    const products = arr
+        .reduce( (list, line) =>
+        {
+            const [product, price] = line.split(" : ")
+            list.push({product, price: Number(price)});
+            return list;
+        }, []
+        )
+        .sort((a, b) => a.product.localeCompare(b.product))
+
+        // than the same string manipulation for with iteration for the output
+
+    console.log(`Raw list of products:`);
+    console.log(products);
+    console.log(`\#AA0000 end of list \x1B`);
+ }
+
+
+
+const inp = ['Banana : 2',
+    'Rubic\'s Cube : 5',
+    'Raspberry P : 4999',
+    'Rolex : 100000',
+    'Rollon : 10',
+    'Rali Car : 2000000',
+    'Pesho : 0.000001',
+    'Barrel : 10'];
+
+
+catStoreROFLsolve(inp);
+catStoreSFancy(inp);
+catStoreAlmostFancy(inp);
+

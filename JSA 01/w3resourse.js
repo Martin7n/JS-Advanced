@@ -65,6 +65,10 @@ function frequentItem(arr){
     .sort(([, a], [, b]) => b - a)  
     .shift(); 
 
+    const sortArr = Object.entries(dicty).sort((a, b) => b[1] - a[1]
+    )
+    console.log(`Most frequent:  ${sortArr[0][0]} ==>> ${sortArr[0][1]} times `)
+
     return `Most frequent: ${topEntry[0]} (${topEntry[1]}) times`;
 
  
