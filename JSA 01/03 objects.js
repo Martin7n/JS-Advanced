@@ -303,7 +303,7 @@ const inp = ['Banana : 2',
     'Barrel : 10'];
 
 
-catStoreROFLsolve(inp);
-catStoreSFancy(inp);
-catStoreAlmostFancy(inp);
+// catStoreROFLsolve(inp);
+// catStoreSFancy(inp);
+// catStoreAlmostFancy(inp);
 
