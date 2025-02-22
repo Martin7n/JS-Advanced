@@ -1,3 +1,3 @@
-function validate() {
+function addItem() {
     console.log('TODO:...');
 }
