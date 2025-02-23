@@ -4,8 +4,9 @@ export function isSymmetric(arr) {
         return false; // Non-arrays are non-symmetric
     }
     let reversed = arr.slice(0).reverse(); // Clone and reverse
+    console.log(reversed)
     let equal = (JSON.stringify(arr) == JSON.stringify(reversed));
     return equal;
 };
 
-// console.log(isSymmetric(1))
+console.log(isSymmetric([1,2,3,2,1])) 
