@@ -1187,3 +1187,5 @@ JSA 01/Testing/node_modules/yocto-queue/index.js
 JSA 01/Testing/node_modules/yocto-queue/license
 JSA 01/Testing/node_modules/yocto-queue/package.json
 JSA 01/Testing/node_modules/yocto-queue/readme.md
+express01/views/.env
+express01/ourApp.db

@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head') %>
+  <body>
+    <%- include('includes/header') %>
+<body>
+    <h2> Recent posts:</h2>
+    <h4 style="color: green;">
+		<%- context.greeting%>
+        <br/>
+        <%- context.user %>
+        <br/>
+        <%- context.url %>
+	</h4>   
+   
+
+    <h2>Add new post</h2>
+    <form action="posts" id="add_post">
+        
+        <label>Subject</label>
+        <input type="subject" id="subject" placeholder="subject" placeholder="type the subject" style="width:15em;">  </input>
+        <br>
+
+        <textarea  type="text" rows="20" style="width:15em; height:10em;"  id="new-text-content" placeholder="enter your post content" 
+        rows="5" >
+        </textarea>
+        <br>
+        <br/>
+        <button>Save post</button>
+
+    </form>
+    
+</body>
+<%- include('includes/footer') %>
+</html> 

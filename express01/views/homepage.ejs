@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head') %>
+  <body>
+    <%- include('includes/header') %>
+<body>
+
+    <h1 style="color: green;">
+		<%- context.greeting%>
+        <br/>
+        <%- context.user %>
+        <br/>
+        <%- context.url %>
+	</h1>   
+    
+    
+    <form action="/" method="POST">
+        <input type="text" id="zzz" placeholder="Type your text">  </input>
+
+        <button>Post</button>
+
+    </form>
+</body>
+<%- include('includes/footer') %>
+</html>
