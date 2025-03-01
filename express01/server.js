@@ -75,17 +75,27 @@ app.post('/register', (req, res) => {
 app.get('/posts', (req, res) => { 
 
   context = {greeting: "hello",
-    user: "user1234",
-    url: `<a href=#>${req.body.zzz}</a>`
+    title: "user1234",
+    subject: `<a href=#>${req.body.title}</a>`,
+    content: "none"
+}
+  res.render("posts", {context})
+  
+});
+
+app.post('/posts', (req, res) => { 
+
+  console.log(req.body.title)
+
+  context = {greeting: "hello",
+    title: "user1234",
+    subject: `<a href=#>${req.body.title}</a>`,
+     content: req.body.content
 }
 
   res.render("posts", {context})
   
 });
-
-
-
-
 
 
 

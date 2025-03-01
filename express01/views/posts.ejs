@@ -9,20 +9,20 @@
     <h4 style="color: green;">
 		<%- context.greeting%>
         <br/>
-        <%- context.user %>
+        <%- context.title %>
         <br/>
-        <%- context.url %>
+        <%- context.content %>
 	</h4>   
    
 
     <h2>Add new post</h2>
-    <form action="posts" id="add_post">
+    <form action="/posts" method="POST">
         
         <label>Subject</label>
-        <input type="subject" id="subject" placeholder="subject" placeholder="type the subject" style="width:15em;">  </input>
+        <input type="text" name="title" id="title" placeholder="title" placeholder="type the subject" style="width:15em;">  </input>
         <br>
 
-        <textarea  type="text" rows="20" style="width:15em; height:10em;"  id="new-text-content" placeholder="enter your post content" 
+        <textarea  type="text" name="content" rows="20" style="width:15em; height:10em;"  id="new-text-content" placeholder="enter your post content" 
         rows="5" >
         </textarea>
         <br>
