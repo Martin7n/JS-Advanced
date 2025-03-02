@@ -21176,3 +21176,5 @@ express01/node_modules/tinymce/skins/content/writer/content.js
 express01/node_modules/tinymce/skins/content/writer/content.min.css
 express01/node_modules/tinymce/skins/ui/oxide-dark/content.css
 express01/node_modules/tinymce/skins/ui/oxide-dark/content.inline.css
+express01/node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node
+express01/node_modules/better-sqlite3/build/Release/better_sqlite3.node
