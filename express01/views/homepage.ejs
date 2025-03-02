@@ -6,6 +6,34 @@
     <%- include('includes/header') %>
 <body>
 
+
+    <form action="/register" method="POST">
+        <% context.errors.forEach(error => { %>
+ <p class="notice"><%= error %></p>
+ <% }) %>
+
+            
+            
+    <fieldset>
+        <form action="register" method="POST">
+        
+            <label>Username</label>
+            <input type="username" id="username" name="username" placeholder="username">  </input>
+            <br>
+            <label>Password</label>
+            <input type="password" id="password" name="password" placeholder="password">  </input>
+            <br>
+            <button>Register</button>
+    
+        </form>
+        
+    </fieldset>
+
+    <!-- <% context.errors.forEach(error => { %>
+        <p class="notice"><%= error %></p>
+        <% }) %>
+
+
     <h1 style="color: green;">
 		<%- context.greeting%>
         <br/>
@@ -16,11 +44,11 @@
     
     
     <form action="/" method="POST">
-        <input type="text" id="zzz" placeholder="Type your text">  </input>
+        <input type="text" id="zzz" name="some" placeholder="Type your text">  </input>
 
         <button>Post</button>
 
-    </form>
+    </form> -->
 </body>
 <%- include('includes/footer') %>
 </html>

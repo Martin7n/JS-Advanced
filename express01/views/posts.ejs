@@ -5,6 +5,10 @@
   <body>
     <%- include('includes/header') %>
 <body>
+
+
+    <!-- <h4>Hello <%= user.username %>, you do not have any posts yet</h4>         -->
+
     <h2> Recent posts:</h2>
     <h4 style="color: green;">
 		<%- context.greeting%>
@@ -13,18 +17,18 @@
         <br/>
         <%- context.content %>
 	</h4>   
-   
+
 
     <h2>Add new post</h2>
+    <h4> Author: <%- user.username %></h4>
     <form action="/posts" method="POST">
         
         <label>Subject</label>
-        <input type="text" name="title" id="title" placeholder="title" placeholder="type the subject" style="width:15em;">  </input>
+        <input type="text" name="title" id="title" placeholder="title" placeholder="type the title" style="width:15em;">  </input>
         <br>
 
-        <textarea  type="text" name="content" rows="20" style="width:15em; height:10em;"  id="new-text-content" placeholder="enter your post content" 
-        rows="5" >
-        </textarea>
+        <textarea  type="text" name="content" rows="20" cols="1" style="width:15em; height:10em;"  id="new-text-content" placeholder="enter your post content" 
+        value="" ></textarea>
         <br>
         <br/>
         <button>Save post</button>

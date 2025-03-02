@@ -6,13 +6,15 @@
     <%- include('includes/header') %>
 <body>
 
-    <form action="register.ejs" id="register">
+
+
+    <form action="register" method="POST">
         
         <label>Username</label>
-        <input type="username" id="username" placeholder="username">  </input>
+        <input type="username" id="username" name="username" placeholder="username">  </input>
         <br>
         <label>Password</label>
-        <input type="password" id="password" placeholder="password">  </input>
+        <input type="password" id="password" name="password" placeholder="password">  </input>
         <br>
         <button>Register</button>
 
