@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After-lab tryouts</title>
+    <style>  
+    body {padding: 50px;
+          background-color: azure;}
+    nav {display: flex; 
+        flex-direction: row; 
+        padding: 3px; 
+        margin: 2px;
+        font-size: large;
+        font: 1em sans-serif;
+        align-items: flex-start; 
+        gap: 2em;
+        border-radius: 5%;}   
+    main {display: flex; 
+                flex-direction: column; 
+                padding: 10px; 
+                margin: 10px; 
+                border: 3px; 
+                justify-content: space-around;
+                
+            }
+    .cont {margin: 20px;
+        border: 1px solid black; border-radius: 5%;
+        padding: 1em;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/">Login</a>
+        <a href="/">Logout</a>
+        <a href="/">Register</a>
+    </nav>
+
+
+
+    
+    <div class="main">
+        <div> Login form:
+            <form action="post">
+                <input type="text" label="username">username</input>
+                <br>
+                <input type="password" label="password">password</input>
+                <br>
+                <button>LogIn</button>
+            </form>
+        </div>
+        <br>
+    <div class="fetched">Fetched data
+        <button id="getSome">Aaa</button>  
+
+        <div class="conteiner" id="jsons">
+                <div class="cont" id="autoparts"></div>
+                <div class="cont" id="messenger"></div>
+                <div class="cont" id="phonebook"></div>
+                <div class="cont" id="cookbook"></div>
+        </div>
+
+    </div>
+
+
+    <div class="conteiner" id="added"> Add data:
+        <button>Add data</button>
+
+        <div class="cont" id="autopartsAdd"></div>
+        <div class="cont" id="messengerAdd"></div>
+        <div class="cont" id="phonebookAdd"></div>
+        <div class="cont" id="cookbookAdd"></div>
+
+    </div>
+
+</div>
+
+
+
+
+    <script src="./run.js"></script>
+
+
+    </div>
+
+    
+</body>
+</html>

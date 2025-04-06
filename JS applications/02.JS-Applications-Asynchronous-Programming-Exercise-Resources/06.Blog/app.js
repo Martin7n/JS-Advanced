@@ -86,7 +86,7 @@ function attachEvents() {
       
     function commentDetails(comData){
 
-        
+        ulElmnt.replaceChildren()
         
         for (const key in comData) {
 
