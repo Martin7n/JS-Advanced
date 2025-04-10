@@ -46,12 +46,12 @@
     
     <div class="main">
         <div> Login form:
-            <form action="post">
+            <form  method="post" id="loginForm">
                 <input type="text" label="username">username</input>
                 <br>
                 <input type="password" label="password">password</input>
                 <br>
-                <button>LogIn</button>
+                <button id="loginBtn">LogIn</button>
             </form>
         </div>
         <br>
@@ -69,17 +69,38 @@
 
 
     <div class="conteiner" id="added"> Add data:
-        <button>Add data</button>
 
-        <div class="cont" id="autopartsAdd"></div>
-        <div class="cont" id="messengerAdd"></div>
-        <div class="cont" id="phonebookAdd"></div>
-        <div class="cont" id="cookbookAdd"></div>
+        <form  method="post" id="addInfo">
+<!-- 
+            <div class="cont" id="autopartsAdd"></div>
+            <div class="cont" id="messengerAdd"></div>
+            <div class="cont" id="phonebookAdd"></div>
+            <div class="cont" id="cookbookAdd"></div> -->
 
+            <div>
+                <span>Label</span>
+                <input type="text" name="label" id="part_label">
+            </div>
+            <div>
+                <span>Unit Price</span>
+                <input type="number" name="price" id="part_price">
+            </div>
+            <div>
+                <span>Quantity</span>
+                <input type="number" name="qty" id="part_quantity">
+            </div>
+            <div>
+            <button id="addData">Add data</button>
+        </form>
     </div>
 
 </div>
 
+
+<form action="/submit" method="POST" id="myForm">
+    <input type="text" name="username" />
+    <button type="submit">Submit</button>
+  </form>
 
 
 
