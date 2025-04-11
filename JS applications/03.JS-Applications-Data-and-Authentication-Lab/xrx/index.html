@@ -97,6 +97,36 @@
 </div>
 
 
+
+</div>
+
+
+
+<section id="editor_edit">
+    <h2>Edit Part</h2>
+
+    <input type="hidden" id="edit_part_id">
+    <div>
+        <span>Label</span>
+        <input type="text" id="edit_part_label">
+    </div>
+    <div>
+        <span>Unit Price</span>
+        <input type="number" id="edit_part_price">
+    </div>
+    <div>
+        <span>Quantity</span>
+        <input type="number" id="edit_part_qty">
+    </div>
+    <div>
+        <button id="save_btn">Save Part</button>
+        <button id="cancel_btn">Cancel</button>
+    </div>
+</section>
+
+
+
+
 <form action="/submit" method="POST" id="myForm">
     <input type="text" name="username" />
     <button type="submit">Submit</button>

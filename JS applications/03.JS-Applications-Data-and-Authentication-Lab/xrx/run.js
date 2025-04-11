@@ -25,7 +25,7 @@ forms.forEach(
 
 
 
- const btnGetSome = document.getElementById("getSome")
+const btnGetSome = document.getElementById("getSome")
 const logInForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn')
 
@@ -64,10 +64,27 @@ function getAutoparts(){
                
                 partContainer.textContent = `part: ${element.label}\nprice: $ ${element.price}\nquantity: ${element.qty};`
                 partContainer.id = element['_id'];
+                const hrefEl = document.createElement("a")
+                hrefEl.textContent = "[DELETE]";
+                hrefEl.href = "#"
+                hrefEl.classList.add("delete-link");
+                hrefEl.addEventListener("click", (e) => {
+                    
+                rowDelete(partContainer.id);
+                console.log(hrefEl.parentElement.remove())})
+                partContainer.appendChild(hrefEl)
+
+
+                const hrefEditEL = document.createElement("a")
+                hrefEditEL.href = "#"
+                hrefEditEL.textContent = "[EDIT]"
+                hrefEditEL.classList.add("edit-link");
+                hrefEditEL.addEventListener("click", (e) => {editInfo(partContainer.id)});
+                partContainer.appendChild(hrefEditEL)
+
                 // autopartsDiv.append(partContainer);
                 
                 if (autopartsDiv) {
-                    
                     autopartsDiv.append(partContainer);
                 } else {
                     console.log('autopartsDiv not found');
@@ -82,6 +99,28 @@ function getAutoparts(){
         console.error('Something went wrong:', e);
       });
 }
+
+
+function rowDelete(idd){
+    const choice = confirm('Are you sure?');
+    if (!choice) {return console.error("errrr...")}
+
+
+    const url = 'http://localhost:3030/jsonstore/autoparts/' + idd;
+
+    const options = {
+        method: 'DELETE'
+    }
+
+    fetch(url, options).catch(e => { console.error('Something went ...:', e);});
+
+
+    return console.log(`Aa ${idd}`)
+
+
+
+}
+
 
 // async function getAutoparts() {
 //     let data;
@@ -108,6 +147,60 @@ function getAutoparts(){
                 
 //         } 
 // }
+
+
+ function editInfo(id){
+
+    console.log(id)
+
+    const url = 'http://localhost:3030/jsonstore/autoparts/' + id;
+    fetch(url).then(checkResponse)
+    .then(data => {
+        const edtPartID =  document.getElementById("edit_part_id");
+        const edtPartLabel = document.getElementById("edit_part_label");
+        const edtPartPrice = document.getElementById("edit_part_price");
+        const edtPartQty = document.getElementById("edit_part_qty");
+        const saveBtn = document.getElementById('save_btn')
+        edtPartID.value = data._id
+        edtPartLabel.value = data.label
+        edtPartPrice.value = data.price
+        edtPartQty.value = data.qty
+
+        saveBtn.addEventListener("click", updatePart);
+
+
+
+    })
+    .catch(e => {console.error(`${e} error`)})
+
+ 
+}
+
+function updatePart(){
+
+    const choice = confirm('Are you really sure?');
+    if (!choice) {return console.error("errrr...")}
+    const record = {};
+
+    record._id = document.getElementById('edit_part_id').value;
+    record.label = document.getElementById('edit_part_label').value;
+    record.price = Number(document.getElementById('edit_part_price').value);
+    record.qty = Number(document.getElementById('edit_part_qty').value);
+
+    const url = 'http://localhost:3030/jsonstore/autoparts/' + record._id;
+
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(record)
+    }
+
+    fetch(url, options).catch(e => { console.error('Something went ...:', e);});
+    getAutoparts()
+    document.getElementById('editor_edit').innerHTML = ""
+}   
 
 
 function addInfo(event){
@@ -155,8 +248,6 @@ function checkResponse(response){
     return response.json()
 }
 
-
- 
 
 }
 
