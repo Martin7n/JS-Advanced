@@ -1,6 +1,6 @@
 
 
- function dataAuth(){
+ function dataLoadEditAdd(){
 
 
 const baseStoreUrl = 'http://localhost:3030/jsonstore';
@@ -252,5 +252,5 @@ function checkResponse(response){
 }
 
 
-let result = dataAuth();
+let result = dataLoadEditAdd();
 
