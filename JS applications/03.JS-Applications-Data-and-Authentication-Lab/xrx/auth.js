@@ -31,6 +31,11 @@ function auth(){
 
         // some validations of the mail and pass/repass later..
 
+        if (password.length <5 | password !==repass) {
+            alert("Erorr626336")
+            return new Error("Details error...")
+        }
+
         const options = {
             method: "POST",
             headers: {
