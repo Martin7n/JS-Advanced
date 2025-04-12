@@ -1,3 +1,5 @@
+import {personalFavoriteCheckResponseFunction} from '../modulefunc.js'
+
 function attachEvents() {
 
     const url = 'http://localhost:3030/jsonstore/messenger';
@@ -33,11 +35,7 @@ function attachEvents() {
             body: JSON.stringify(message)
         }
 
-        // fetch(url, options)
-        // .then(personalFavoriteCheckResponseFunction)
-        // .then(rsp => 
-        //     console.log(`responseData:${Object.fromEntries(Object.entries(rsp)).author} <=> ${Object.fromEntries(Object.entries(rsp)).content}`))
-        // .catch(e=> alert(e));
+
         
 
         fetch(url, options).then(personalFavoriteCheckResponseFunction)
@@ -74,10 +72,10 @@ function attachEvents() {
     console.log('TODO...');
 
 
-    function personalFavoriteCheckResponseFunction(response){
-        if (!response.ok) throw new Error("Error");
-        return response.json()
-    }
+    // function personalFavoriteCheckResponseFunction(response){
+    //     if (!response.ok) throw new Error("Error");
+    //     return response.json()
+    // }
 }
 
 attachEvents();
