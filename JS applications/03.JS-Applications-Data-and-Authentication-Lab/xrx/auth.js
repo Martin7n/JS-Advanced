@@ -51,6 +51,7 @@ function auth(){
             console.log(userInfo.accessToken);
             localStorage.setItem(email, userInfo.email);
             localStorage.setItem('accessToken', userInfo.accessToken)
+            localStorage.setItem('_id', userInfo._id)
             localtion = "/";
         })
         .catch(e => alert(e))
@@ -89,14 +90,14 @@ function auth(){
             console.log(userInfo)
             localStorage.setItem('email', userInfo.email);
             localStorage.setItem('accessToken', userInfo.accessToken);
-            location = '/';
+            localStorage.setItem('_id', userInfo._id)
+
+            console.log(`${localStorage['_id']} id saved`)
+            // 
         })
         .catch(e => {alert(e)})
 
     }
-
-
-
 
 
     
