@@ -8,28 +8,17 @@ export function checkLogUser(){
 };
 
 export function dynamicNav(){
-    const username = checkLogUser()
-    if (username){
-        [...document.querySelectorAll('.user')].forEach(
-            el => el.style.visibility = "none"
-            
-        );
-        [...document.querySelectorAll('.guest')].forEach(
-            el => el.style.visibility = "inline"
-        );
+    const username = sessionStorage.getItem('username')
+    if (username) {
+        [...document.querySelectorAll('.guest')].forEach(i => i.style.display = 'none');
+        [...document.querySelectorAll('.user')].forEach(i => i.style.display = 'inline');
         document.getElementById('welcome-msg').textContent = `Welcome, ${username}!`;
+        console.log(`logged: ${username}`)
     } else {
-
-        [...document.querySelectorAll('.user')].forEach(
-            el => el.style.visibility = "inline"
-        );
-
-        [...document.querySelectorAll('.guest')].forEach(
-            el => el.style.visibility = "none"
-        );
-
-        console.log("reg-nav #active"   )
-
+        [...document.querySelectorAll('.guest')].forEach(i => i.style.display = 'inline');
+        [...document.querySelectorAll('.user')].forEach(i => i.style.display = 'none');
+        console.log('non logged')
+       
     }
 };
 

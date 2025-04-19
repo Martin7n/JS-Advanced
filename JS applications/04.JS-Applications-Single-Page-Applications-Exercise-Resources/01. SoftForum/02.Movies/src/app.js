@@ -19,22 +19,20 @@ function initial(){
     //     '/create': createPage
     // };
 
-
-
     dynamicNav()
   
 
-        const loginSection = document.getElementById("form-login");
-        const registerSection = document.getElementById("form-sign-up");
-        const editForm = document.getElementById('edit-movie');
+        // const loginSection = document.getElementById("form-login");
+        // const registerSection = document.getElementById("form-sign-up");
+        // const editForm = document.getElementById('edit-movie');
         
-        [loginSection, registerSection, editForm].forEach(element => {
-            if (element) {
-                element.hidden = 'true'; 
-            }
-        });
+        // // [loginSection, registerSection, editForm].forEach(element => {
+        // //     if (element) {
+        // //         element.hidden = 'true'; 
+        // //     }
+        // // });
 
-        loginPage()
+       
 
         
 }

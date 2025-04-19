@@ -15,12 +15,13 @@ export  async function getAllMovies(urlMovies){
 
 export async function displayMovies(){
 
-    const moviesParent = document.getElementById('movies-list')
+    const moviesParent = document.getElementById('movies-list');
+    moviesParent.innerHTML = '';
     const movies = await getAllMovies(urlMovies);
 
     console.log(movies)
     console.log(Object.values(movies))
-    console.log(Object.fromEntries(movies))
+     
 
     const dat = Object.values(movies)
     dat.forEach(el => {createMovie(el);
