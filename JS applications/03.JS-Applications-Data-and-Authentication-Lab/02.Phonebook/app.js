@@ -34,7 +34,8 @@ function attachEvents() {
     function listCreator(phonJSON){
 
         phoneUlist.innerHTML =""
-        const contactsData = Object.fromEntries(Object.entries(phonJSON));
+        // const contactsData = Object.fromEntries(Object.entries(phonJSON));
+        const contactsData = Object.values(phonJSON)
         for (const key in contactsData) {
             console.log(key)
             const element = contactsData[key];

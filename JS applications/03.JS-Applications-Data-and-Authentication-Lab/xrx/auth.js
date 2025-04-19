@@ -62,8 +62,9 @@ function auth(){
 
     function login(event){
         const formData = new FormData(event.target);
-        
         const {email, password} = Object.fromEntries(formData.entries())
+
+        
 
 
        
