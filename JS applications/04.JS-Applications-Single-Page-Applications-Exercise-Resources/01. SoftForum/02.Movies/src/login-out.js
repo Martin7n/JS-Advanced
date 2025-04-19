@@ -34,47 +34,14 @@ export function loginPage(){
 
 };
 
-// async function onLogin(event){
-//     const logInForm = document.getElementById("login-form");
-//     const formData = new FormData(event.target);
-//     const { email, password } = Object.fromEntries(formData);
-//     const options = {
-//         method: 'post',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ email, password })
-//     }
-
-
-//     const response = await fetch('http://localhost:3030/users/login', options)
-//     .then(personalFavoriteCheckResponseFunction)
-//     .catch(e => alert(e));
-
-//     localStorage.setItem('userId', response.id)
-//     localStorage.setItem('username', response.username)
-//     localStorage.setItem('accessToken', response.accessToken)
-
-//     console.log(localStorage.accessToken)
-//     dynamicNav()
-//     displayMovies()
-// }
-
 async function onLogin(event) {
-    event.preventDefault();
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData);
 
-    // try {
-    //     await login(email, password);
-        
-    //     dynamicNav();
-    //     displayMovies();
-    // } catch (err) {
-    //     alert(err.message);
-    // }
+
 
     await login(email, password).catch(e => console.log(e))
+
     dynamicNav();
     displayMovies();
 }
