@@ -1,4 +1,5 @@
 import { displayMovies } from "./catalog.js";
+import {clearMovies } from "./utilities.js"
 
 
 export function checkLogUser(){
@@ -9,9 +10,7 @@ export function checkLogUser(){
 
 export function dynamicNav(){
 
-    const moviesParent = document.getElementById('movies-list');
-    moviesParent.innerHTML = "";
-
+    clearMovies()
     const username = sessionStorage.getItem('username')
     if (username) {
         [...document.querySelectorAll('.guest')].forEach(i => i.style.display = 'none');

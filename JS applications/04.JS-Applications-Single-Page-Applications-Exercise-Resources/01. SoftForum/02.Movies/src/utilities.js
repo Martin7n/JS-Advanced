@@ -21,9 +21,12 @@ export function preventDefaultOnLinks(...elements) {
         }
     });
 }
+ 
 
-
-
+export function clearMovies(){
+    const moviesParent = document.getElementById('movies-list');
+    moviesParent.innerHTML = "";
+}
 
 export function clearLoginForm() {
     document.getElementById('email').value = "";

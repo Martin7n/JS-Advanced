@@ -1,8 +1,6 @@
 import {personalFavoriteCheckResponseFunction} from "./utilities.js"
-
-import { dynamicNav } from "./auth.js"
-
-import {checkLogUser} from "./auth.js"
+import { dynamicNav, checkLogUser } from "./auth.js"
+import { getMovieDetails } from "./details.js"
 
 const urlMovies = 'http://localhost:3030/data/movies'
 
@@ -56,12 +54,19 @@ function createMovie(movie){
 
     const cardFooterEleement = document.createElement("div")
     cardFooterEleement.className = "card-footer";
+
+    const username = checkLogUser();
+    if (username){
+
     const infoBtn = document.createElement("button")
     infoBtn.className = "btn btn-info";
     infoBtn.id = movie._id
     infoBtn.textContent = "Details"
-    infoBtn.addEventListener("click", (e) => {console.log("not ready yet")});
+    // infoBtn.addEventListener("click", (e) => {console.log("not ready yet")});
+
+    infoBtn.addEventListener("click", getMovieDetails)
     cardFooterEleement.append(infoBtn)
+    }
     
     movieLiElmnt.append(cardFooterEleement)
 
