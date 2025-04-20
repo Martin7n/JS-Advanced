@@ -8,6 +8,10 @@ export function checkLogUser(){
 };
 
 export function dynamicNav(){
+
+    const moviesParent = document.getElementById('movies-list');
+    moviesParent.innerHTML = "";
+
     const username = sessionStorage.getItem('username')
     if (username) {
         [...document.querySelectorAll('.guest')].forEach(i => i.style.display = 'none');
@@ -20,9 +24,21 @@ export function dynamicNav(){
         console.log('non logged')
        
     }
+
+
+        const regFromElmnt = document.getElementById("form-sign-up");
+        regFromElmnt.style.display = 'none';
+
+        const loginForm = document.getElementById('login-form')
+        loginForm.style.display = 'none';
+
+        displayMovies()
+
 };
 
-displayMovies()
+
+
+
 
 
 

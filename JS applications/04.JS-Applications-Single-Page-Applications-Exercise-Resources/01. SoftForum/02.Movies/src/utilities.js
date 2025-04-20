@@ -22,6 +22,17 @@ export function preventDefaultOnLinks(...elements) {
     });
 }
 
+
+
+
+export function clearLoginForm() {
+    document.getElementById('email').value = "";
+    document.getElementById('password').value = "";
+    document.getElementById('repeatPassword').value = "";
+
+}
+
+
 // export function preventDefaultOfElements(...args){
 
 

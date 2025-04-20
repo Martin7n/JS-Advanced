@@ -7,13 +7,3 @@ function getMovie(id){
 
 };
 
-
-function displayDetails(){
-
-};
-
-
-function createdetailedView(){
-
-};
-

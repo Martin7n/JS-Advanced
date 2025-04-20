@@ -1,5 +1,7 @@
 import {personalFavoriteCheckResponseFunction} from "./utilities.js"
 
+import { dynamicNav } from "./auth.js"
+
 import {checkLogUser} from "./auth.js"
 
 const urlMovies = 'http://localhost:3030/data/movies'
@@ -15,8 +17,9 @@ export  async function getAllMovies(urlMovies){
 
 export async function displayMovies(){
 
+  
+
     const moviesParent = document.getElementById('movies-list');
-    moviesParent.innerHTML = '';
     const movies = await getAllMovies(urlMovies);
 
     console.log(movies)
