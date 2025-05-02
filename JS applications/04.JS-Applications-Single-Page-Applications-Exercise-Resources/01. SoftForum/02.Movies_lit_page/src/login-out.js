@@ -95,7 +95,6 @@ async function login(email, password) {
     loginFormSection.innerHTML = "";
     
     window.location.href = "/";
-    displayMovies()
 
 
 }

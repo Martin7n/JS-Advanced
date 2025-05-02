@@ -5,20 +5,23 @@ import { menusRegister } from "./register.js"
 import { navigationRender } from './navigation.js'
 import { displayMovies } from './catalog.js'
 import page from "//unpkg.com/page/page.mjs";
-
+import { addMovieView } from './createmovie.js'
 
 
 function initial(){
 
     
     const urlMovies = 'http://localhost:3030/data/movies'
- 
-    page('/', displayMovies); // Main route: selfex.
+    //displayMovies
+    page('/', navigationRender); // Main route: selfex.
+    page("/catalog", displayMovies)
     page('/login', loginPage)
     page('/register', menusRegister )
+    // page('/details:id', ); currently with eventlistener, so i will have to refactor
     page('/logout', "/")
-    
-    page.start(); 
+    page('/add-movie', addMovieView)
+
+    page(); 
 
     
 }

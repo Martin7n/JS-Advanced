@@ -8,6 +8,7 @@ const urlMovies = 'http://localhost:3030/data/movies'
 
 const moviesParent = document.getElementById('movies-list');
 
+
 const movieMov = html`<li class="card mb-4">
                   <img class="card-img-top"  src="https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg" alt="Card image cap" width="400"/>
                   <div class="card-body">
@@ -30,8 +31,9 @@ export  async function getAllMovies(urlMovies){
 }
 
 export async function displayMovies(){
-
+    
     const moviesParent = document.getElementById('movies-list');
+    moviesParent.innerHTML = "";
     const movies = await getAllMovies('http://localhost:3030/data/movies');
 
     let moviesFound = []
@@ -61,7 +63,6 @@ export async function displayMovies(){
     //...so easy & short...nice!
     navigationRender()
     render(moviesFound, moviesParent)
-    // navigationRender()
 
     }   
 

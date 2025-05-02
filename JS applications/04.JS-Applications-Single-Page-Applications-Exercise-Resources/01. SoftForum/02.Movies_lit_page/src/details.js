@@ -1,4 +1,4 @@
-
+import page from "//unpkg.com/page/page.mjs";
 import {html, render} from '../node_modules/lit-html/lit-html.js';
 import {clearMovies } from "./utilities.js"
 import { personalFavoriteCheckResponseFunction } from './utilities.js'
@@ -19,26 +19,24 @@ export async function getMovieDetails(event){
 
 
 
-    const movieDetailsCard = html`<section id="movie-example" class="view-section">
+    const movieDetailsCard = html`<section id="${movie._id}" class="view-section">
          <div class="container"> 
            <div class="row bg-light text-dark">
-            <h1>Movie title: Black Widow</h1>
+            <h1>Movie title: ${movie.title}</h1>
               
             <div class="col-md-8">
               <img
                 class="img-thumbnail"
-                src="https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg"
+                src="${movie.img}"
                 alt="Movie"
               />
             </div>
             <div class="col-md-4 text-center">
               <h3 class="my-3">Movie Description</h3>
               <p>
-                Natasha Romanoff aka Black Widow confronts the darker parts of
-                her ledger when a dangerous conspiracy with ties to her past
-                arises. Comes on the screens 2020.
+                ${movie.description}
               </p>
-              <a class="btn btn-danger" href="#">Delete</a>
+              <a class="btn btn-danger" href="#" @click=${deleteMovie(movie._id)}>Delete</a>
               <a class="btn btn-warning" href="#">Edit</a>
               <a class="btn btn-primary" href="#">Like</a>
               <span class="enrolled-span">Liked 1</span>
@@ -48,6 +46,8 @@ export async function getMovieDetails(event){
       </section>`
 
       render(movieDetailsCard, movieCardDetails)
+
+      
 
     
 };
@@ -62,29 +62,38 @@ async function getMovieData(movieId){
     const movieDetailsObj = Object.fromEntries(Object.entries(data));
     console.log(movieDetailsObj.title)
     return movieDetailsObj
-    // response format:
-    //     "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-    //     "title": "Top Gun 2",
-    //     "description": "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
-    //     "img": "https://i.pinimg.com/originals/f2/a4/58/f2a458048757bc6914d559c9e4dc962a.jpg",
-    //     "_createdOn": 1614935268135,
-    //     "_id": "a9bae6d8-793e-46c4-a9db-deb9e3484909"
-    // }
+
 
 
 }
 
 
 
-function delEvent(event){
-    console.log(event.target.className)
+async function deleteMovie(movieId){
+
+
+  const accessToken = sessionStorage.getItem('accessToken')
+  const options = {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Authorization': accessToken
+  },
+  body: JSON.stringify(null)
+  }
+ 
+  const response = fetch(urlMovies+movieId, options)
+  .then( () =>
+    {
+    const movieCardDetails = document.getElementById(movieId)
+    page("/catalog")
+   })
+    .catch(e => alert(e)).catch(e => console.log(e))
+
+  
 }
-function editEvent(event){
-    console.log(event.target)
-}
-function likeEvent(event){
-    console.log(event.target)
-}
+
+
 
 // TODO:
 

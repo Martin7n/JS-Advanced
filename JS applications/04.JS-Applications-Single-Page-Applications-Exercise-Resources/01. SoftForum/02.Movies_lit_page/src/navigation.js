@@ -13,7 +13,7 @@ let navigation = "";
     if (!!username) {
             navigation = html`
                 <li class="nav-item user">
-                    <a class="nav-link" id="welcome-msg">Welcome, ${username.username}</a>
+                    <a class="nav-link" id="welcome-msg">Welcome, ${username}</a>
                 </li>
                 <li class="nav-item user">
                     <a class="nav-link" id="logout-link" href="/logout" @click=${logoutPage}>Logout</a>

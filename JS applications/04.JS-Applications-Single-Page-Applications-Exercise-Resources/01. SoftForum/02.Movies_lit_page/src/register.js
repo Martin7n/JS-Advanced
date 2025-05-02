@@ -1,24 +1,5 @@
-import { dynamicNav } from "./auth.js";
-import { displayMovies } from "./catalog.js";
-import { clearLoginForm } from "./utilities.js"
 import {html, render} from '../node_modules/lit-html/lit-html.js';
 import page from "//unpkg.com/page/page.mjs";
-
-const reglink = document.getElementById('register-link');
-// reglink.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     menusRegister();}
-// );
-
-const regform = document.getElementById('register-form')
-
-
-// regform.addEventListener("submit", (e) => e.preventDefault());
-
-// regform.addEventListener("submit", register);
-
-
-
 
 export function menusRegister(){
     const regFormSection = document.getElementById("form-sign-up");
@@ -93,7 +74,7 @@ export function register(event){
     .then(response => {
         console.log(response)
         sessionStorage.setItem('email', response.email);
-        sessionStorage.setItem('username', response.username);
+        sessionStorage.setItem('username', response.email);
         sessionStorage.setItem('accessToken', response.accessToken);
         sessionStorage.setItem('_id', response._id);
 
@@ -104,7 +85,7 @@ export function register(event){
         // localStorage.setItem('_id', response._id);
         // clearLoginForm()
         // navigationRender()
-        document.getElementById("form-sign-up").inneHtml = "";
+        document.getElementById("form-sign-up").innerHtml = "";
         page('/'); 
         }
     )
