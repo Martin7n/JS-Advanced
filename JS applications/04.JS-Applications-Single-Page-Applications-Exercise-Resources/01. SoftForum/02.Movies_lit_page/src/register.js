@@ -1,6 +1,8 @@
 import { dynamicNav } from "./auth.js";
 import { displayMovies } from "./catalog.js";
 import { clearLoginForm } from "./utilities.js"
+import {html, render} from '../node_modules/lit-html/lit-html.js';
+import page from "//unpkg.com/page/page.mjs";
 
 const reglink = document.getElementById('register-link');
 // reglink.addEventListener("click", (e) => {
@@ -18,18 +20,64 @@ const regform = document.getElementById('register-form')
 
 
 
-function menusRegister(){
-    const regFromElmnt = document.getElementById("form-sign-up");
-    regFromElmnt.style.display = 'block';
-    const loginForm = document.getElementById('login-form')
-    loginForm.style.display = 'none';
+export function menusRegister(){
+    const regFormSection = document.getElementById("form-sign-up");
+    const registerForm = html`
+    <form
+          id="register-form"
+          class="text-center border border-light p-5"
+          action=""
+          method=""
+        >
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              name="email"
+              value=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+              value=""
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="repeatPassword">Repeat Password</label>
+            <input
+              id="repeatPassword"
+              type="password"
+              class="form-control"
+              placeholder="Repeat-Password"
+              name="repeatPassword"
+              value=""
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary" @click=${register}>Register</button>
+        </form>`
+
+        render(registerForm, regFormSection )
+        const btnForm = document.getElementById("register-form")
+        btnForm.addEventListener( "submit", e => {e.preventDefault(); console.log("prevented")});
 }
 
 export function register(event){
-    console.log(event.target)
+    console.log(event.target.parentElement)
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target.parentElement);
     const {email, password} = Object.fromEntries(formData.entries())
+    console.log(email, password)
 
     const url = 'http://localhost:3030/users/register'
     const options = {
@@ -44,16 +92,24 @@ export function register(event){
     .then(checkResponse)
     .then(response => {
         console.log(response)
-        localStorage.setItem('email', response.email);
-        //username is not defined on server so username is added with email.
-        localStorage.setItem('username', response.username);
-        localStorage.setItem('accessToken', response.accessToken);
-        localStorage.setItem('_id', response._id);
+        sessionStorage.setItem('email', response.email);
+        sessionStorage.setItem('username', response.username);
+        sessionStorage.setItem('accessToken', response.accessToken);
+        sessionStorage.setItem('_id', response._id);
+
+        // localStorage.setItem('email', response.email);
+        // //username is not defined on server so username is added with email.
+        // localStorage.setItem('username', response.username);
+        // localStorage.setItem('accessToken', response.accessToken);
+        // localStorage.setItem('_id', response._id);
+        // clearLoginForm()
+        // navigationRender()
+        document.getElementById("form-sign-up").inneHtml = "";
+        page('/'); 
         }
     )
     .catch(e => console.log(e))
-    clearLoginForm()
-        dynamicNav();
+   
 
 
 };

@@ -4,7 +4,6 @@ import {clearMovies } from "./utilities.js"
 import { personalFavoriteCheckResponseFunction } from './utilities.js'
 
 
-
  const urlMovies = 'http://localhost:3030/data/movies/'
 
 

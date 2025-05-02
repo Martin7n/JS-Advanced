@@ -59,9 +59,9 @@ export async function displayMovies(){
     
     )
     //...so easy & short...nice!
-
-    render(moviesFound, moviesParent)
     navigationRender()
+    render(moviesFound, moviesParent)
+    // navigationRender()
 
     }   
 

@@ -93,9 +93,9 @@ async function login(email, password) {
 
     const loginFormSection = document.getElementById('form-login')
     loginFormSection.innerHTML = "";
-    // displayMovies()
-    page.redirect('/')
-    // console.log("redirect91")
+    
+    window.location.href = "/";
+    displayMovies()
 
 
 }
@@ -106,10 +106,7 @@ export function logoutPage(){
 
     
 
-    const logged = checkLogUser()
-    // if (!logged) { return }
-    // console.log("TO DO: Log out")
-     
+    const logged = checkLogUser()    
     const token = sessionStorage.getItem('accessToken');
     const options = {
         method: "get",
@@ -124,8 +121,8 @@ export function logoutPage(){
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('accessToken');
 
-    // navigationRender()
-    page.redirect("/")
+    window.location.href = "/";
+
 
 };
 

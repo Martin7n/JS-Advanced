@@ -9,7 +9,7 @@ export function navigationRender(){
 const username = checkLogUser();
 
 const navigationUlElement = document.querySelector('ul.navbar-nav.ml-auto')
-let navigation;
+let navigation = "";
     if (!!username) {
             navigation = html`
                 <li class="nav-item user">
