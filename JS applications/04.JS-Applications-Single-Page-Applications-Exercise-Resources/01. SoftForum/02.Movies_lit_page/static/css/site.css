@@ -39,3 +39,11 @@
     text-decoration: underline;
     box-shadow: 0 5px 10px #cccccc;
 }
+
+
+#img-fluid {width: 150%; height: 200px; }
+
+#jumbotron jumbotron-fluid text-light {
+    background-color: #343a40;
+
+}
