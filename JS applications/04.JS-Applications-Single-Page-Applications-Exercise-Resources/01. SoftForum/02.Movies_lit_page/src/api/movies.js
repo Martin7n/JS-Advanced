@@ -13,10 +13,6 @@ const movies = {
         .then(data => Object.values(data))
         .catch(e => console.log(`error ${e}`))
 
-            // const response = fetch(urlMovies).then(personalFavoriteCheckResponseFunction).catch(e => console.log(e))
-            // const movies = await response
-            // return movies
-
     },
 
     getMovie(id){
@@ -24,6 +20,31 @@ const movies = {
         return fetch(urlMovies + id)
         .then(response => response.json())
         .catch(e => console.log(`error ${e}`));
+    },
+
+    rmMovie(id){
+
+        const user = sessionStorage.getItem('accessToken');
+        console.log(user)
+        if (!user) {
+            return alert("Unauthorized")
+        }
+
+        const options = {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': user
+            },
+        } 
+        const response =    fetch(urlMovies + id, options)
+        .then(response => {
+            response.json()
+            console.log("deleted")})
+        .catch(e => console.log(`error ${e}`));
+
+        page.redirect("/")
+
     },
 
     // async getLikes(id){

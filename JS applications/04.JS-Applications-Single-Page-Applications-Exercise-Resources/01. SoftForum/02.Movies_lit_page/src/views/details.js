@@ -25,7 +25,7 @@ const template = (movie) => {
               <p>
                 ${movie.description}
               </p>
-              <a class="btn btn-danger" href="#">Delete</a>
+              <a class="btn btn-danger" href="/delete/${movie._id}">Delete</a>
               <a class="btn btn-warning" href="#">Edit</a>
               <a class="btn btn-primary" href="#" >Like</a>
               <span class="enrolled-span">Liked 0</span>
@@ -35,14 +35,24 @@ const template = (movie) => {
     </section>`;}
 
 
-export  function renderDetails(ctx){
+export  async function renderDetails(ctx){
   const movieId = ctx.params.id;
-  const movie =  movies.getMovie(movieId);
+  const movie =  await movies.getMovie(movieId);
   // console.log(`movie returned ${movie}`)
 
   render(template(movie), mainContainer)
 
 };
+
+export function delMovie(ctx){
+
+  const movieId = ctx.params.id;
+  movies.rmMovie(movieId)
+  // page.redirect("/")
+
+  // const movie =  movies.rmMovie(movieId);
+
+}
 
 // async function liked(movieId){
 
