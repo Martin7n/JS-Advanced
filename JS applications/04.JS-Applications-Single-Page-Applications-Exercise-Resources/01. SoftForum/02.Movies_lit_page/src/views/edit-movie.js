@@ -1,14 +1,17 @@
 import { html, render } from 'lit-html';
 import page from "page";
+import movies from '../api/movies.js'
 
 
 const mainContainer = document.getElementById('container');
 
-const template = html`
-        <section id="add-movie" class="view-section">
+const template = (movie) => {
+    return html`
+        <section id="edit-movie" class="view-section">
         
 
-            <form class="text-center border border-light p-5" action="#" method="">
+            <form @submit=${(e) => editMovie(e, movie._id)}
+            class="text-center border border-light p-5" action="#" method="">
                 <h1>Edit Movie</h1>
                 <div class="form-group">
                     <label for="title">Movie Title</label>
@@ -17,7 +20,7 @@ const template = html`
                     type="text"
                     class="form-control"
                     placeholder="Movie Title"
-                    value=""
+                    value=${movie.title}
                     name="title"
                     />
                 </div>
@@ -27,7 +30,7 @@ const template = html`
                     class="form-control"
                     placeholder="Movie Description..."
                     name="description"
-                    ></textarea>
+                    >${movie.description}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="imageUrl">Image url</label>
@@ -36,17 +39,32 @@ const template = html`
                     type="text"
                     class="form-control"
                     placeholder="Image Url"
-                    value=""
+                    value=${movie.img}
                     name="img"
                     />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" >Submit</button>
                 </form>
-        </section>`
+        </section>`}
 
-export function renderEditMovie(){
+export async function renderEditMovie(ctx){
 
+    const movieId = ctx.params.id;
+    const movie =  await movies.getMovie(movieId);
+  
+    render(template(movie), mainContainer)
 
-    render(template, mainContainer)
+}
+
+async function editMovie(event, id){
+    event.preventDefault();
+    const form = event.target.closest('form');
+    const formData = new FormData(form);
+    const {title, description, img} = Object.fromEntries(formData.entries());
+
+    await movies.updateMovie(id, title, description, img);
+    page.redirect(`/catalog/${id}`)
+   
+
 
 }

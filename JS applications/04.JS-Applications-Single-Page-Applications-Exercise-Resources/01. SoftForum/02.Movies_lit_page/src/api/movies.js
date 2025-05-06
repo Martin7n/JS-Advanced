@@ -25,7 +25,6 @@ const movies = {
     rmMovie(id){
 
         const user = sessionStorage.getItem('accessToken');
-        console.log(user)
         if (!user) {
             return alert("Unauthorized")
         }
@@ -37,15 +36,15 @@ const movies = {
                 'X-Authorization': user
             },
         } 
-        const response =    fetch(urlMovies + id, options)
+        return fetch(urlMovies + id, options)
         .then(response => {
             response.json()
             console.log("deleted")})
         .catch(e => console.log(`error ${e}`));
 
-        page.redirect("/")
-
     },
+
+    
 
     // async getLikes(id){
 
@@ -97,6 +96,36 @@ const movies = {
             })
             .catch(e => console.log(e));
 
+    },
+
+    updateMovie(id, title, description, img){
+        
+        const accessToken = sessionStorage.getItem('accessToken')
+
+
+        const options = {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': accessToken
+            },
+            body: JSON.stringify({title, description, img, accessToken })
+            
+        }
+
+        return fetch(urlMovies + id, options)
+            .then((response) => {
+                response.json()
+                console.log("modified")
+               
+            })
+            .catch(e => console.log(e));
+
+
+    
+    
+    
+    
     }
 
 
