@@ -1,5 +1,5 @@
-import {html, render} from '../../node_modules/lit-html/lit-html.js';
-import page from "//unpkg.com/page/page.mjs";
+import { html, render } from 'lit-html';
+import page from "page";
 import authActions  from '../api/auth.js'
 
 const container = document.getElementById('container')

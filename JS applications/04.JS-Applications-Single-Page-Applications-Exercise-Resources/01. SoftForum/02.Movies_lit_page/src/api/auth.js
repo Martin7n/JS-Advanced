@@ -1,4 +1,4 @@
-import page from "//unpkg.com/page/page.mjs";
+import page from 'page'
 
 
 const url = 'http://localhost:3030/users/';

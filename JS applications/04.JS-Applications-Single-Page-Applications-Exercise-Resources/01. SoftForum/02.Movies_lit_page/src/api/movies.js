@@ -1,4 +1,5 @@
-import page from "//unpkg.com/page/page.mjs";
+import page from "page";
+
 
 
 const urlMovies = 'http://localhost:3030/data/movies/';

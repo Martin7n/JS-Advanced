@@ -1,4 +1,4 @@
-import page from "//unpkg.com/page/page.mjs";
+import page from 'page'
 
 import { renderNav } from './views/navigation.js'
 import { mainSectionCatalog} from './views/catalog.js'
