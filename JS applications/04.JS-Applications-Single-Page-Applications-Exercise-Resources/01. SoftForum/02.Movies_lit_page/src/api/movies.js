@@ -44,39 +44,10 @@ const movies = {
 
     },
 
-    
-
-    // async getLikes(id){
-
-
-        // const res = await fetch(`http://localhost:3030/data/likes?where=movieId%3D%22${id}%22&distinct=_ownerId&count`);
-        // const likes = await res.json();
-        // console.log(likes)
-
-        // return fetch(`http://localhost:3030/data/likes?where=movieId%3D%22${id}%22&distinct=_ownerId&count`)
-        // .then(response => response.json())
-        // .catch(e => console.log(`error ${e}`));
-       
-    // },
-    // likeMovie(id){
-
-    //      fetch('http://localhost:3030/data/likes', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'X-Authorization': user.accessToken
-    //         },
-    //         body: JSON.stringify({
-    //             movieId})
-    //         });
-        
-
-    // }
-    // ,
 
     createMovie(title, description, img){
 
-        const user = sessionStorage.getItem('userId')
+
         const accessToken = sessionStorage.getItem('accessToken')
 
         const options = {
@@ -99,8 +70,16 @@ const movies = {
     },
 
     updateMovie(id, title, description, img){
+        const uuid = sessionStorage.getItem('userId')
         
         const accessToken = sessionStorage.getItem('accessToken')
+
+        const user = sessionStorage.getItem('userId')
+        //todo: user vs creator check or future permission upgrade
+
+        if (!user) {
+            return alert("Unauthorized")
+        }
 
 
         const options = {
@@ -120,11 +99,6 @@ const movies = {
                
             })
             .catch(e => console.log(e));
-
-
-    
-    
-    
     
     }
 
